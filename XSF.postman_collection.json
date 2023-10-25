@@ -1,0 +1,234 @@
+{
+	"info": {
+		"_postman_id": "6acda96a-206d-4ccd-99bf-8d73d97390bb",
+		"name": "XSF",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "25170767"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "session",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/auth/session"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"email\": \"admin@email.com\",\r\n\t\"password\": \"Admin#10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"email\": \"admin@email.com\",\r\n\t\"password\": \"Admin#1!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/auth/logout"
+					},
+					"response": []
+				},
+				{
+					"name": "reset",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "http://localhost:8000/api/auth/reset"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "view users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/users"
+					},
+					"response": []
+				},
+				{
+					"name": "view user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/users/2"
+					},
+					"response": []
+				},
+				{
+					"name": "create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"username\": \"user5\",\r\n\t\"email\": \"user5@email.com\",\r\n\t\"password\": \"User#101\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/users"
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"user4\",\r\n    \"email\":\"user5@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/users/10"
+					},
+					"response": []
+				},
+				{
+					"name": "update password",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\":\"User#101\",\r\n    \"newPassword\":\"User#102\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/users/10"
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8000/api/users/10"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "writeups",
+			"item": [
+				{
+					"name": "view writeups",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/writeups"
+					},
+					"response": []
+				},
+				{
+					"name": "get writeup",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "create writeup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "content",
+									"contentType": "",
+									"type": "file",
+									"src": "/C:/Users/Catalin/Desktop/projects/xsf-api/README.md"
+								},
+								{
+									"key": "title",
+									"value": "test2",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "test",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8000/api/writeups"
+					},
+					"response": []
+				},
+				{
+					"name": "update writeup",
+					"request": {
+						"method": "PUT",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "delte writeup",
+					"request": {
+						"method": "DELETE",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
