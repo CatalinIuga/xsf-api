@@ -5,7 +5,7 @@ Simple Deno Oak API for Cross Site Flags - XSF.
 ## Features:
 
 - Validation and authentication middleware.
-- RESt-ful API procedures.
+- REST API procedures.
 - Session based authentication
 - SQLite3 database
 
