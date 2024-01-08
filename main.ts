@@ -13,32 +13,36 @@ app.addEventListener("error", (evt) => {
   console.error(evt.error);
 });
 
-// @ts-expect-error - > misconfig of types between oak_sessions and oak
 app.use(sessionMiddleware);
 
 app.use(
   oakCors({
-    origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
-    exposedHeaders: [
-      "Access-Control-Allow-Origin",
-      "Access-Control-Allow-Methods",
-      "Access-Control-Allow-Headers",
-      "Access-Control-Allow-Credentials",
-      "Content-Type",
-      "Set-Cookie",
-    ],
-    allowedHeaders: [
-      "Access-Control-Allow-Origin",
-      "Access-Control-Allow-Methods",
-      "Access-Control-Allow-Headers",
-      "Access-Control-Allow-Credentials",
-      "Content-Type",
-      "Set-Cookie",
-    ],
-    methods: ["GET", "HEAD", "PUT", "POST", "DELETE", "PATCH"],
-    credentials: true,
+    origin: "http://localhost:3000",
+    // exposedHeaders: [
+    //   "Access-Control-Allow-Origin",
+    //   "Access-Control-Allow-Methods",
+    //   "Access-Control-Allow-Headers",
+    //   "Access-Control-Allow-Credentials",
+    //   "Content-Type",
+    //   "Set-Cookie",
+    // ],
+    // allowedHeaders: [
+    //   "Access-Control-Allow-Origin",
+    //   "Access-Control-Allow-Methods",
+    //   "Access-Control-Allow-Headers",
+    //   "Access-Control-Allow-Credentials",
+    //   "Content-Type",
+    //   "Set-Cookie",
+    // ],
+    // methods: ["GET", "HEAD", "PUT", "POST", "DELETE", "PATCH"],
+    // credentials: true,
   })
 );
+
+// CORST test endpoint
+app.use((ctx) => {
+  ctx.response.body = "Hello World!";
+});
 
 app.use(authRouter.routes());
 app.use(authRouter.allowedMethods());
@@ -49,7 +53,12 @@ app.use(userRouter.allowedMethods());
 app.use(writeupRouter.routes());
 app.use(writeupRouter.allowedMethods());
 
-console.log("Server running on port %c8000", "color: green;");
+console.log(
+  "Server running at: %chttp://localhost%c:%c8000",
+  "color: blue;",
+  "color: orange;",
+  "color: green;"
+);
 await app.listen({ port: 8000 });
 
 database.close();
